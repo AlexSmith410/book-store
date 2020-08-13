@@ -65,6 +65,7 @@
             <td th:text="${b.description}"></td>
             <td th:text="${b.price}"></td>
             <td th:text="${b.publishYear}"></td>
+            <td><a class="btn btn-primary" th:href="@{'/cart/increase/' + ${b.id}}">Добавить в корзину</a></td>
         </tr>
         </tbody>
     </table>
