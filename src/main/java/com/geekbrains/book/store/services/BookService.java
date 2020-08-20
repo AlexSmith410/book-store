@@ -44,4 +44,12 @@ public class BookService {
     public Page<Book> findsAll(int page, int size){
        return bookRepository.findAll(PageRequest.of(page, size));
     }
+
+    public void deleteAll() {
+        bookRepository.deleteAll();
+    }
+
+    public boolean existsById(Long id) {
+        return bookRepository.existsById(id);
+    }
 }
