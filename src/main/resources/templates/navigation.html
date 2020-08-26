@@ -26,6 +26,9 @@
                 <li class="nav-item" th:classappend="${activeTab == 'Profile' ? 'active' : ''}">
                     <a class="nav-link" th:href="@{'/profile'}">Профиль</a>
                 </li>
+                <li class="nav-item" th:classappend="${activeTab == 'Statistic' ? 'active' : ''}">
+                    <a class="nav-link" th:href="@{'/statistic'}">Статистика</a>
+                </li>
                 <li sec:authorize="hasAnyRole('ADMIN', 'SUPERADMIN')" class="nav-item" th:classappend="${activeTab == 'Admin' ? 'active' : ''}">
                     <a class="nav-link" th:href="@{'/admin'}">Админ-панель</a>
                 </li>
