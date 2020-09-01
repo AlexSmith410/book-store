@@ -1,7 +1,9 @@
 package com.geekbrains.book.store.entities;
 
 import com.geekbrains.book.store.beans.Cart;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
@@ -13,6 +15,13 @@ import java.util.List;
 @Table(name = "orders")
 @Data
 public class Order {
+    @AllArgsConstructor
+    @Getter
+    public enum Status{
+        INPROCESSING("INPROCESSING"), READY("READY");
+        String name;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -28,6 +37,10 @@ public class Order {
 
     @Column(name = "price")
     private BigDecimal price;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status")
+    private Status status;
 
     public Order(User user, Cart cart) {
         this.user = user;

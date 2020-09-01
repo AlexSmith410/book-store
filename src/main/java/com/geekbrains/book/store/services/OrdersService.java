@@ -2,6 +2,7 @@ package com.geekbrains.book.store.services;
 
 
 import com.geekbrains.book.store.entities.Order;
+import com.geekbrains.book.store.exceptions.ResourceNotFoundException;
 import com.geekbrains.book.store.repositories.OrdersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,6 +17,11 @@ public class OrdersService {
     }
 
     public Order saveOrder(Order order) {
+        order.setStatus(Order.Status.INPROCESSING);
         return ordersRepository.save(order);
+    }
+
+    public Order findById(Long id){
+        return ordersRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Order with id: " + id + " not found"));
     }
 }

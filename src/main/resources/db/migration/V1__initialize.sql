@@ -52,6 +52,7 @@ insert into users_roles (user_id, role_id) values (1, 1), (1, 3);
 create table orders (id bigserial,
                     user_id bigint not null,
                     price numeric(8, 2) not null,
+                    status varchar(50),
                     primary key(id),
                     constraint fk_user_id foreign key (user_id) references users (id));
 
